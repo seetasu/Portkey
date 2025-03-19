@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "门钥匙-by seeta",
+    "version": "1.0",
+    "description": "在新标签页显示书签列表",
+    "permissions": [
+      "bookmarks",
+      "cookies",
+      "contextMenus"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "chrome_url_overrides": {
+      "newtab": "newtab.html"
+    },
+    "icons": {
+      "48": "img/icon48.png",
+      "128": "img/icon128.png"
+    }
+  }

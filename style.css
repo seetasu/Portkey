@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; /* 移除内边距 */
+    background-color: #f5f5f5;
+    height: 100vh; /* 设置 body 高度为 100% 浏览器高度 */
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    height: calc(100% - 70px); /* 减去问候语的高度 */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px; /* 统一左右边距 */
+}
+
+.greeting-container {
+    text-align: left;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 32px;
+    font-weight: bolder;
+    color: #333;
+}
+
+#bookmarks {
+    width: fit-content;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: flex-start;
+    margin: 0 auto; /* 添加这行来使书签列表水平居中 */
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.bookmark-folder {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 10px;
+    width: 100%; /* 文件夹占据整行 */
+}
+
+.bookmark-item {
+    padding: 15px 8px;
+    background-color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    width: 240px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    transition: transform 0.2s ease, background-color 0.2s ease, left 0.3s ease;
+}
+
+.folder-name {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.bookmark-folder > .bookmark-item {
+    display: inline-block;
+    margin: 5px;
+}
+
+.bookmark-item a {
+    color: #191919;
+    text-decoration: none;
+    display: block;
+    max-width: calc(100% - 45px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    left: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* 禁用链接的点击事件 */
+}
+
+.bookmark-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    pointer-events: none; /* 禁用图标的点击事件 */
+}
+
+/* 移除之前的伪元素，因为不再需要了 */
+.bookmark-item::before {
+    display: none;
+}
+
+/* 拖拽相关样式 */
+.bookmark-item.dragging {
+    opacity: 0.5;
+    cursor: move;
+    z-index: 100;
+}
+
+/* 确保这个样式有足够的优先级 */
+.bookmark-item.drag-over {
+    background-color: #E3F2FD !important;
+}
+
+/* 其他状态的样式 */
+.bookmark-item:hover {
+    background-color: #f5f5f5;
+}
+
+.bookmark-item:hover a {
+    text-decoration: none;
+}
+
+.context-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 5px 0;
+    z-index: 1000;
+}
+
+.menu-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+#username {
+    color: white;
+    background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    border-bottom: 1px dashed transparent;
+    padding: 0 4px;
+    min-width: 20px;
+    display: inline-block;
+}
+
+#username:hover {
+    border-bottom-color: #2196F3;
+}
+
+#username:focus {
+    outline: none;
+    border-bottom-color: #2196F3;
+}
+
+/* 添加拖拽成功的动画类 */
+@keyframes dropSuccess {
+    0% {
+        background-color: #E3F2FD;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.drop-success {
+    animation: dropSuccess 0.3s ease-out;
+}   
