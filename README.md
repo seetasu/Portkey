@@ -1,18 +1,22 @@
-# Portkey
+# Portkey门钥匙
 
 A Chrome extension that displays your bookmarks on the new tab page.  
 一个在新标签页展示书签的 Chrome 扩展。
+
+A Portkey was a magical object enchanted to instantly bring anyone touching it to a specific location.
+门钥匙 (Portkey)是一种被施过魔法的物品，可以将接触到它的人传送到指定的位置。
+
 <img width="856" alt="image" src="https://github.com/user-attachments/assets/07864c28-ebf8-41b0-987a-c3c84e5cf7d1" />
 
 
 ## Features 功能特点
 
-
 - **Drag and Drop Support 支持拖拽排序**  
-
 - **Dynamic Favicon Loading 动态图标加载**  
+- **Personalized Greeting 个性化问候**
+- **【WIP】Customize Portkey 自定义门钥匙图标**
+- **【WIP】Select Your Own Color 选择自己喜欢的背景色**
 
-- **Personalized Greeting 个性化问候**  
 
  
 ## Installation 安装方法
