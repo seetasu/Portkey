@@ -1,12 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "门钥匙-by seeta",
+    "name": "Portkey",
     "version": "1.0",
-    "description": "在新标签页显示书签列表",
+    "description": "Show bookmarks on new tab page",
     "permissions": [
       "bookmarks",
-      "cookies",
-      "contextMenus"
+      "favicon"
     ],
     "host_permissions": [
       "<all_urls>"

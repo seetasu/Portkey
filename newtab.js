@@ -316,47 +316,18 @@ function showContextMenu(event, bookmark) {
 
 function tryGetFavicon(url, icon) {
     try {
-        const urlObj = new URL(url);
-        const hostname = urlObj.hostname;
-
-        if (hostname.includes('codehub-g.huawei.com')) {
-            icon.src = 'img/codehub.png';
-            return;
-        }
-        
-        if (hostname.includes('octo-cd.hdesign.huawei.com') || hostname.includes('octo.hdesign.huawei.com')) {
-            icon.src = 'img/octo.png';
-            return;
-        }
+        // 使用 chrome-extension API 获取 favicon
+        const faviconUrl = `chrome-extension://${chrome.runtime.id}/_favicon/?pageUrl=${encodeURIComponent(url)}&size=32`;
         
         icon.onerror = function() {
-            const hostname = urlObj.origin;
-            const faviconPaths = [
-                `${hostname}/favicon.ico`,
-                `${hostname}/favicon.png`,
-                `${hostname}/static/favicon.ico`,
-                `${hostname}/images/favicon.ico`,
-                `${hostname}/static/images/favicon.ico`,
-            ];
-
-            let currentIndex = 0;
-
-            function tryNextPath() {
-                if (currentIndex < faviconPaths.length) {
-                    icon.src = faviconPaths[currentIndex];
-                    currentIndex++;
-                } else {
-                    icon.src = getDefaultIcon();
-                }
-            }
-
-            icon.onerror = tryNextPath;
-            tryNextPath();
+            icon.onerror = null;
+            icon.src = getDefaultIcon();
         };
-
-        icon.src = `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=32`;
-
+        
+        icon.src = faviconUrl;
+        
     } catch (e) {
+        console.error('Error in tryGetFavicon:', e);
         icon.src = getDefaultIcon();
     }
 }
